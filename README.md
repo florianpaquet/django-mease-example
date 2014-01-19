@@ -3,6 +3,8 @@ django-mease-example
 
 Simple chat example using django-mease
 
+![screenshot](https://raw.github.com/florianpaquet/django-mease-example/master/images/screenshot.png)
+
 Installation
 ------------
 
