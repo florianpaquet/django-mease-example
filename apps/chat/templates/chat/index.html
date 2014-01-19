@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html ng-app="ChatApp">
+    <head>
+        <title>django-mease demo</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Lib -->
+        <script src="{% static 'chat/app/lib/lodash.js' %}"></script>
+        <script src="{% static 'chat/app/lib/angular.js' %}"></script>
+        <script src="{% static 'chat/app/lib/angular-cookies.js' %}"></script>
+        <script src="{% static 'chat/app/lib/angular-websocket.js' %}"></script>
+        <script src="{% static 'chat/app/lib/restangular.js' %}"></script>
+        <!-- App -->
+        <script src="{% static 'chat/app/js/app.js' %}"></script>
+        <!-- Constants -->
+        <script>
+            // Angular constants
+            chatApp
+                .constant('urls', {
+                    partials: "{% static 'chat/app/partials/' %}",
+                });
+        </script>
+        <!-- Controllers -->
+        <script src="{% static 'chat/app/js/controllers/chat-controller.js' %}"></script>
+        <!-- Services -->
+        <script src="{% static 'chat/app/js/services/websocket.js' %}"></script>
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700,700italic,400italic,300italic' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="{% static 'chat/css/foundation.css' %}" />
+        <link rel="stylesheet" href="{% static 'chat/css/app.css' %}" />
+        <script src="{% static 'chat/js/modernizr.js' %}"></script>
+    </head>
+
+    <body ng-controller="ChatController">
+        {% verbatim %}
+
+        <div class="row full-width">
+            <div class="large-12 columns">
+
+                <div id="me">
+
+                    <p id="username">Known as : <span class="name">{{ me.username }}</span></p>
+
+                    <div id="change-username">
+                        <form ng-submit="changeUserName(userForm.username)">
+                            <div class="row collapse">
+                                <div class="small-9 columns">
+                                    <input ng-model="userForm.username" placeholder="Change username" type="text">
+                                </div>
+                                <div class="small-3 columns">
+                                    <button type="submit" class="button postfix">Change</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div id="boards">
+
+                    <h3>Boards</h3>
+                    <hr>
+
+                    <ul id="boards-list" class="no-bullet">
+                        <li ng-repeat="board in boards">
+                            <a href="#" ng-click="subscribeToBoard(board)">{{ board.name }}</a>
+                        </li>
+                    </ul>
+
+                    <div id="new-board">
+                        <form ng-submit="createBoard(boardForm.name)">
+                            <div class="row collapse">
+                                <div class="small-8 columns">
+                                    <input ng-model="boardForm.name" placeholder="Board name" type="text">
+                                </div>
+                                <div class="small-4 columns">
+                                    <button type="submit" class="button postfix">Create</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div id="messages" ng-show="board">
+                    <h3>{{ board.name }}</h3>
+                    <hr>
+
+                    <div id="messages-list">
+                        <p class="message" ng-repeat="message in messages">
+                            <span class="date">[{{ message.created }}]</span>
+                            <span class="username" ng-class="{admin: message.admin}">[{{ message.username }}]</span>
+                            {{ message.content }}
+                        </p>
+                    </div>
+                </div>
+
+                <div id="users" ng-show="board">
+                    <h3>Users</h3>
+                    <hr>
+
+                    <ul id="users-list" class="no-bullet">
+                        <li ng-repeat="user in users">{{ user.username }}</li>
+                    </ul>
+                </div>
+
+                <div id="new-message">
+                    <form ng-submit="sendMessage(messageForm.content)" ng-show="board">
+                        <div id="content">
+                            <input ng-model="messageForm.content" placeholder="Message" type="text">
+                        </div>
+                        <button type="submit" class="button postfix">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endverbatim %}
+
+        <script src="{% static 'chat/js/jquery.js' %}"></script>
+        <script src="{% static 'chat/js/foundation.min.js' %}"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>
