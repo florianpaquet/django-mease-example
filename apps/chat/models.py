@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 
 
@@ -9,6 +10,9 @@ class Board(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __unicode__(self):
+        return unicode(self.name)
 
 
 class Message(models.Model):
@@ -23,3 +27,6 @@ class Message(models.Model):
 
     def __str__(self):
         return self.content
+
+    def __unicode__(self):
+        return unicode(self.content)
