@@ -16,6 +16,7 @@ def message_created(routing, clients_list, message):
     """
     msg = make_message('messages.created', {
         'admin': message.admin,
+        'notice': False,
         'created': message.created.strftime(DATETIME_FORMAT),
         'username': message.username,
         'content': message.content,

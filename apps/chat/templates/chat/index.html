@@ -91,7 +91,7 @@
                     <hr>
 
                     <div id="messages-list">
-                        <p class="message" ng-repeat="message in messages">
+                        <p class="message" ng-repeat="message in messages" ng-class="{notice: message.notice}">
                             <span class="date">[{{ message.created }}]</span>
                             <span class="username" ng-class="{admin: message.admin}">[{{ message.username }}]</span>
                             {{ message.content }}

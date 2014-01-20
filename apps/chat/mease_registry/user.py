@@ -1,6 +1,10 @@
 from djmease import mease
+from datetime import datetime
+from django.conf import settings
 
 from ..websocket import make_message
+
+DATETIME_FORMAT = getattr(settings, 'CHAT_DATETIME_FORMAT')
 
 
 # ---- Openers
@@ -46,17 +50,28 @@ def set_username(client, message, clients_list):
     Sets an user name
     """
     if message.get('type') == 'user.setname':
+        old_username = client.storage.get('username', '')
+        board_id = client.storage.get('subscription')
+
         username = message.get('data', {}).get('username')
         client.storage['username'] = username
 
-        board_id = client.storage.get('subscription')
-
         if board_id:
-            message = make_message('user.setname', {
+            notice_message = make_message('messages.created', {
+                'admin': True,
+                'notice': True,
+                'created': datetime.now().strftime(DATETIME_FORMAT),
+                'username': 'SYSTEM',
+                'content': "{old} is now known as {new}".format(
+                    old=old_username, new=username)
+            })
+
+            setname_message = make_message('user.setname', {
                 'id': client.storage.get('id'),
                 'username': username
             })
 
             for c in clients_list:
                 if c.storage.get('subscription') == board_id:
-                    c.send(message)
+                    c.send(setname_message)
+                    c.send(notice_message)

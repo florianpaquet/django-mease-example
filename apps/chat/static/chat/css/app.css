@@ -118,6 +118,10 @@ h1, h2, h3, h4, h5, h6, .button {
     margin: 0;
 }
 
+#messages #messages-list .message.notice {
+    color: #B3B1B2;
+}
+
 #messages #messages-list .message .date{
     margin-right: 3px;
     color: #B3B1B2;
