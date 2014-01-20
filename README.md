@@ -1,7 +1,7 @@
 django-mease-example
 ====================
 
-Simple chat example using django-mease
+Simple chat example using [django-mease](https://github.com/florianpaquet/django-mease)
 
 ![screenshot](https://raw.github.com/florianpaquet/django-mease-example/master/images/screenshot.png)
 
