@@ -117,6 +117,7 @@ LOGGING = {
         'mease.websocket_server': {
             'handlers': ['console'],
             'level': 'DEBUG',
+            'propagate': 0
         },
     },
 }
