@@ -1,16 +1,20 @@
 django-mease-example
 ====================
 
-Simple chat example using [django-mease](https://github.com/florianpaquet/django-mease)
+Simple chat example using [django](https://github.com/django/django), [django-mease](https://github.com/florianpaquet/django-mease) and [AngularJS](https://github.com/angular/angular.js).
 
 ![screenshot](https://raw.github.com/florianpaquet/django-mease-example/master/images/screenshot.png)
 
 Installation
 ------------
 
-Clone this repo and set up your virtualenv as usual. (Requires python3)
+Clone this repo and set up your virtualenv as usual :
 
 ```
+git clone https://github.com/florianpaquet/django-mease-example.git
+cd django-mease-example
+virtualenv virtenv
+source virtenv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -30,7 +34,7 @@ python manage.py syncdb
 Usage
 -----
 
-Start websocket server in a first shell :
+Start websocket server in a first terminal :
 
 ```
 python manage.py run_websocket_server
