@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import mease
+from djmease import mease
 from django.conf import settings
 
 from ..websocket import make_message
@@ -9,8 +9,8 @@ DATETIME_FORMAT = getattr(settings, 'CHAT_DATETIME_FORMAT')
 
 # ---- Senders
 
-@mease.sender(channels=['messages.created'])
-def message_created(channel, clients_list, message):
+@mease.sender(routing='messages.created')
+def message_created(routing, clients_list, message):
     """
     Sends messages on message creation
     """

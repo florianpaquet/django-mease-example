@@ -1,4 +1,4 @@
-import mease
+from djmease import mease
 
 from ..websocket import make_message
 

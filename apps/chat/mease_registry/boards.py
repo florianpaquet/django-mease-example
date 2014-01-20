@@ -1,4 +1,4 @@
-import mease
+from djmease import mease
 from uuid import uuid4
 
 from ..websocket import make_message
@@ -65,8 +65,8 @@ def board_subscribe(client, message, clients_list):
 
 # ---- Senders
 
-@mease.sender(channels=['boards.created'])
-def board_created(channel, clients_list, board):
+@mease.sender(routing='boards.created')
+def board_created(routing, clients_list, board):
     """
     Sends messages on board creation
     """

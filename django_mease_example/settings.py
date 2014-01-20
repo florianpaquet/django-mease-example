@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mease',
+    'djmease',
     'rest_framework',
     'apps.chat',
 )
@@ -84,11 +84,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEASE_REDIS_CHANNELS = [
-    'boards.created',
-    'messages.created',
-    'user.nameupdate',
-]
+MEASE_CONF = {
+
+}
 
 CHAT_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
