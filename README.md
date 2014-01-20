@@ -15,16 +15,23 @@ pip install -r requirements.txt
 python manage.py syncdb
 ```
 
+`django-mease` comes with Redis PUB/SUB backend by default. Install these dependencies to get it to work :
+
+```
+sudo apt-get install redis-server python-dev
+pip install redis toredis-mease
+```
+
 Usage
 -----
 
 Start websocket server in a first shell :
 
 ```
-python manage.py start_websocket_server
+python manage.py run_websocket_server
 ```
 
-Start django server in a second one :
+Start django debug server in a second one :
 
 ```
 python manage.py runserver
