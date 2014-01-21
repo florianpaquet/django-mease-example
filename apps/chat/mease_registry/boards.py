@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from djmease import mease
 from uuid import uuid4
 
