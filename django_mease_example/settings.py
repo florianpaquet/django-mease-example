@@ -84,8 +84,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEASE_CONF = {
+MEASE_BACKEND_CLASS = 'mease.backends.redis.RedisBackend'
 
+MEASE_BACKEND_CONFIG = {
+    'HOST': 'localhost',
+    'PORT': 6379
+}
+
+MEASE_WEBSOCKET_CONFIG = {
+    'PORT': 9090
 }
 
 CHAT_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
