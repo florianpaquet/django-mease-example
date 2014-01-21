@@ -1,4 +1,4 @@
 colorlog==2.0.0
 Django==1.6.1
-django-mease==0.1.8
+django-mease==0.1.9
 djangorestframework==2.3.12

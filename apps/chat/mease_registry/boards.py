@@ -19,7 +19,7 @@ def board_init_subscriptions(client, clients_list):
 # ---- Receivers
 
 @mease.receiver(json=True)
-def board_subscribe(client, message, clients_list):
+def board_subscribe(client, clients_list, message):
     """
     Subscribe the client to the board
     """

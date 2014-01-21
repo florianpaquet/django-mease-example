@@ -46,7 +46,7 @@ def user_logged_out(client, clients_list):
 # ---- Receivers
 
 @mease.receiver(json=True)
-def set_username(client, message, clients_list):
+def set_username(client, clients_list, message):
     """
     Sets an user name
     """
