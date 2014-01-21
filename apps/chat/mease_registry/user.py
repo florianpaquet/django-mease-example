@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from djmease import mease
 from datetime import datetime
 from django.conf import settings
