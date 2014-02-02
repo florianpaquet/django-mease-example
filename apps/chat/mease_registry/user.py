@@ -15,8 +15,8 @@ def set_initial_username(client, clients_clist):
     """
     Sets an initial guest user name to the client
     """
-    guest_id = client.application.storage.get('guests_increment', 0) + 1
-    client.application.storage['guests_increment'] = guest_id
+    guest_id = client.factory.storage.get('guests_increment', 0) + 1
+    client.factory.storage['guests_increment'] = guest_id
 
     username = 'Guest{guest_id:d}'.format(guest_id=guest_id)
     client.storage['username'] = username

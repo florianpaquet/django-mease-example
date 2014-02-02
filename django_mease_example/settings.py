@@ -84,15 +84,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEASE_BACKEND_CLASS = 'mease.backends.redis.RedisBackend'
-
-MEASE_BACKEND_CONFIG = {
-    'HOST': 'localhost',
-    'PORT': 6379
-}
-
-MEASE_WEBSOCKET_CONFIG = {
-    'PORT': 9090
+MEASE = {
+    'BACKEND': 'mease.backends.rabbitmq.RabbitMQBackend',
+    # 'BACKEND': 'mease.backends.redis.RedisBackend',
+    'BACKEND_SETTINGS': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+    }
 }
 
 CHAT_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -103,7 +101,7 @@ LOGGING = {
     'formatters': {
         'verbose': {
             '()': 'colorlog.ColoredFormatter',
-            'format': '[%(levelname)s] [%(asctime)s] %(log_color)s%(message)s',
+            'format': '[%(asctime)s] [%(levelname)s] %(log_color)s%(message)s',
             'log_colors': {
                 'DEBUG': 'bold_blue',
                 'INFO': 'bold_yellow',
@@ -121,7 +119,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        'mease.websocket_server': {
+        'mease': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': 0

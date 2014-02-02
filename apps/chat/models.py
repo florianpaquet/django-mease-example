@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Board(models.Model):
     """
     Board containing messages
@@ -11,10 +13,8 @@ class Board(models.Model):
     def __str__(self):
         return self.name
 
-    def __unicode__(self):
-        return unicode(self.name)
 
-
+@python_2_unicode_compatible
 class Message(models.Model):
     """
     Simple message model
@@ -27,6 +27,3 @@ class Message(models.Model):
 
     def __str__(self):
         return self.content
-
-    def __unicode__(self):
-        return unicode(self.content)
